@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courier Information</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://wallpaperaccess.com/full/1567666.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 50px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 16px; /* Adjusted font size */
+            color: #fff;
+            margin-bottom: 15px; /* Adjusted margin */
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 12px; /* Adjusted font size */
+            color: #fff;
+            margin-bottom: 10px; /* Adjusted margin */
+        }
+
+        table {
+            width: 50%; /* Adjusted table width */
+            font-size: 10px; /* Adjusted font size */
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.7); /* Adjust opacity for translucency */
+            border-radius: 8px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Adjusted box shadow */
+            margin-bottom: 15px; /* Adjusted margin */
+        }
+
+        th, td {
+            padding: 8px; /* Adjusted padding */
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: #333; /* Set text color */
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.5); /* Adjust opacity for hover effect */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">SHIPITadmin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('courier_page') }}">Courier</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('transactions_page') }}">Transaction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('sorted_transactions_page') }}">All data</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Courier Information</h1>
+
+        <h2>Couriers</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Courier ID</th>
+                    <th scope="col">Bill Number</th>
+                    <th scope="col">User ID</th>
+                    <th scope="col">Admin ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for courier in couriers %}
+                <tr>
+                    <td>{{ courier.cid }}</td>
+                    <td>{{ courier.billno }}</td>
+                    <td>{{ courier.u_id }}</td>
+                    <td>{{ courier.a_id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Senders</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Bill Number</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sender in senders %}
+                <tr>
+                    <td>{{ sender.BILLNO }}</td>
+                    <td>{{ sender.SNAME }}</td>
+                    <td>{{ sender.SEMAIL }}</td>
+                    <td>{{ sender.SPHONE }}</td>
+                    <td>{{ sender.SADDRESS }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Receivers</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Bill Number</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for receiver in receivers %}
+                <tr>
+                    <td>{{ receiver.BILLNO }}</td>
+                    <td>{{ receiver.REMAIL }}</td>
+                    <td>{{ receiver.RPHONE }}</td>
+                    <td>{{ receiver.RADDRESS }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

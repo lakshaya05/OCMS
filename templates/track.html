@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+       * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-image: url("https://i.pinimg.com/originals/aa/f0/b2/aaf0b2e17d3f9dffb57ab85f022848a1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+li {
+    list-style: none;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem; /* Reduced font size by 20% */
+}
+
+.navbar a:hover {
+    color: orange;
+}
+
+header {
+    position: relative;
+    padding: 0 2rem;
+}
+
+.navbar {
+    width: 80%; /* Reduced navbar width by 20% */
+    height: 48px; /* Reduced navbar height by 20% */
+    margin: 0 auto; /* Center the navbar */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo a {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.navbar .links {
+    display: flex;
+    gap: 1.6rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.input-field {
+    position: relative;
+    border-bottom: 2px solid #ccc;
+    margin: 15px 0;
+}
+
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.15s ease;
+}
+
+.input-field input {
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+}
+
+.input-field input:focus~label, .input-field input:valid~label {
+    font-size: 0.8rem;
+    top: 10px;
+    transform: translateY(-120%);
+}
+
+button {
+    margin-top: 30px;
+    align-self: center;
+    width: fit-content;
+    background: #fff;
+    color: #000;
+    font-weight: 600;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+    border: 2px solid transparent;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    color: #fff;
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+button:hover a {
+    color: white;
+}
+
+.track {
+    align-items: center;
+    width: 400px;
+    padding: 50px;
+    height: 50vh;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.track a {
+    color: black;
+    text-decoration: none;
+}
+
+.track a:hover {
+    text-decoration: none;
+}
+
+.main_window {
+    display: block;
+    align-items: center;
+    padding: 10%;
+}
+
+table {
+    position: relative;
+    color: white;
+    margin-top: 115px;
+}
+
+td {
+    width: 200px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+th {
+    width: 200px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+main {
+    display: flex;
+}
+
+.table {
+    padding: 50px;
+}
+
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIPIT</title>
+    <link rel="stylesheet" href="../track.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="{{ url_for('home') }}">SHIPIT</a></div>
+            <ul class="links">
+                <li class="link"><a href="{{ url_for('render_ship_form') }}">Ship</a></li>
+                <li class="link"><a href="{{ url_for('track_shipment') }}">Track</a></li>
+                <li class="link"><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                <li class="link"><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="main_window">
+            <form method="POST">
+            <div class="track">
+                <h2>Track Shipment</h2>
+                <div class="input-field">
+                    <input type="text" name="shipmentid" required>
+                    <label>Shipment ID</label>
+                </div>
+                <button type="submit">Track</button>
+            </div>
+            </form>
+        </div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shipment ID</th>
+                        <th>Status</th>
+                        <th>Delivery Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

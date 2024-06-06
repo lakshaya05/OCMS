@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Thrift Core</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+      
+        .about-content {
+            margin-top: 40px;
+        }
+
+        .about-heading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .about-paragraph {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">SHIPIT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Login
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('user_login') }}">as User</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('admin_login') }}">as Admin</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container about-content">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="C:\Users\E LAKSHAYA\Desktop\adboutdbms.jpg" alt="About Us Image" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h2 class="about-heading">About Shipit</h2>
+                <p class="about-paragraph">
+                    Welcome to Shipit, your go-to courier service for hassle-free deliveries. We're all about speed, reliability, and making your life easier.
+
+Our Mission
+At [Your Company Name], we're on a mission to revolutionize the way you send and receive packages. Our goal is simple: to get your stuff where it needs to go, pronto.
+
+Our Values
+Fast & Furious: We're all about speed. No more waiting around for your package – we'll have it at your doorstep before you know it.
+Trust & Transparency: You can count on us. We're transparent, reliable, and always have your back.
+Tech-Savvy Solutions: We're not your grandma's courier service. We use cutting-edge tech to streamline the delivery process and keep you in the loop every step of the way.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

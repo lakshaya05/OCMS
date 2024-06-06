@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courier Information</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://wallpaperaccess.com/full/1567666.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 50px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 24px; /* Adjusted font size */
+            color: #fff;
+            margin-bottom: 20px; /* Adjusted margin */
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 18px; /* Adjusted font size */
+            color: #fff; /* Set text color to white */
+            margin-bottom: 20px; /* Adjusted margin */
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto; /* Center align tables */
+            width: 80%; /* Adjusted table width */
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.7); /* Adjust opacity for translucency */
+            border-radius: 8px;
+            box-shadow: 0px 2px 8px rgba(246, 245, 245, 0.1); /* Adjusted box shadow */
+            margin-bottom: 30px; /* Adjusted margin */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: #fff; /* Set text color to white */
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(245, 242, 242, 0.5);
+            
+        .navbar a{
+        text-decoration: none;
+        color: white;
+        font-size: 1.5rem;
+    }
+    
+    .navbar a:hover{
+        color: orange;
+    }
+    
+    header{
+        position: relative;
+        padding: 0 2rem;
+    }
+    
+    .navbar{
+        width: 100%;
+        height: 60px;
+        margin: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .navbar .logo a{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    
+    .navbar .links{
+        display: flex;
+        gap: 2rem;
+        
+    }
+    
+    .headline{
+        margin-top: 50px;
+        color: white;
+        font-size: 60px;
+        font-weight: 600;
+        text-align: center;
+    }
+        
+            
+            /* Adjust opacity for hover effect */
+        }
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">SHIPITadmin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('courier_page') }}">Courier</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('transactions_page') }}">Transaction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('sorted_transactions_page') }}">All data</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h1>Courier Information</h1>
+
+    <h2>Couriers</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Courier ID</th>
+                <th>Bill Number</th>
+                <th>User ID</th>
+                <th>Admin ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in all_data %}
+            {% if data[0] == 'courier' %}
+            <tr>
+                <td>{{ data[1] }}</td>
+                <td>{{ data[2] }}</td>
+                <td>{{ data[3] }}</td>
+                <td>{{ data[4] }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Senders</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Bill Number</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in all_data %}
+            {% if data[0] == 'senders' %}
+            <tr>
+                <td>{{ data[1] }}</td>
+                <td>{{ data[2] }}</td>
+                <td>{{ data[3] }}</td>
+                <td>{{ data[4] }}</td>
+                <td>{{ data[5] }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Receivers</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Bill Number</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in all_data %}
+            {% if data[0] == 'receivers' %}
+            <tr>
+                <td>{{ data[1] }}</td>
+                <td>{{ data[2] }}</td>
+                <td>{{ data[3] }}</td>
+                <td>{{ data[4] }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Transactions</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Bill Number</th>
+                <th>Date</th>
+                <th>Receiver Name</th>
+                <th>User ID</th>
+                <th>Admin ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in all_data %}
+            {% if data[0] == 'transactions' %}
+            <tr>
+                <td>{{ data[1] }}</td>
+                <td>{{ data[2] }}</td>
+                <td>{{ data[3] }}</td>
+                <td>{{ data[4] }}</td>
+                <td>{{ data[5] }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rMVzy3w1bsrpL5p+8OzaHt2rj4Gg+0pTvlAcF5p7DI2oOt1JtTKwQ5w5owPrf4ah" crossorigin="anonymous">
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://wallpaperaccess.com/full/1567666.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 50px;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 24px; /* Adjusted font size */
+            color: #fff;
+            margin-bottom: 20px; /* Adjusted margin */
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 18px; /* Adjusted font size */
+            color: #fff; /* Set text color to white */
+            margin-bottom: 20px; /* Adjusted margin */
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto; /* Center align tables */
+            width: 85%; /* Adjusted table width */
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.7); /* Adjust opacity for translucency */
+            border-radius: 8px;
+            box-shadow: 0px 2px 8px rgba(246, 245, 245, 0.1); /* Adjusted box shadow */
+            margin-bottom: 30px; /* Adjusted margin */
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: #fff; /* Set text color to white */
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(245, 242, 242, 0.5); /* Adjust opacity for hover effect */
+        }
+</style>
+
+</head>
+<body>
+        
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-md-6">
+                <h3>Merged Table Information</h3>
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Courier ID</th>
+                            <th>Bill Number</th>
+                            <th>User ID</th>
+                            <th>Admin ID</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Country</th>
+                            <th>Receiver Email</th>
+                            <th>Receiver Phone</th>
+                            <th>Receiver Address</th>
+                            <th>Sender Name</th>
+                            <th>Sender Email</th>
+                            <th>Sender Phone</th>
+                            <th>Sender Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in merged_data %}
+                            <tr>
+                                <td>{{ row.cid }}</td>
+                                <td>{{ row.BILLNO }}</td>
+                                <td>{{ row.u_id }}</td>
+                                <td>{{ row.a_id }}</td>
+                                <td>{{ row.city }}</td>
+                                <td>{{ row.state }}</td>
+                                <td>{{ row.country }}</td>
+                                <td>{{ row.REMAIL }}</td>
+                                <td>{{ row.RPHONE }}</td>
+                                <td>{{ row.RADDRESS }}</td>
+                                <td>{{ row.SNAME }}</td>
+                                <td>{{ row.SEMAIL }}</td>
+                                <td>{{ row.SPHONE }}</td>
+                                <td>{{ row.SADDRESS }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-6">
+                <h3>User Information</h3>
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Admin ID</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in user_data %}
+                            <tr>
+                                <td>{{ row.u_id }}</td>
+                                <td>{{ row.name }}</td>
+                                <td>{{ row.email }}</td>
+                                <td>{{ row.phone }}</td>
+                                <td>{{ row.a_id }}</td>
+                                <td>{{ row.city }}</td>
+                                <td>{{ row.state }}</td>
+                                <td>{{ row.country }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <h3>Transactions Information</h3>
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Bill Number</th>
+                            <th>Date</th>
+                            <th>Receiver Name</th>
+                            <th>User ID</th>
+                            <th>Admin ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in transactions_data %}
+                            <tr>
+                                <td>{{ row.BILLNO }}</td>
+                                <td>{{ row.DATE }}</td>
+                                <td>{{ row.RNAME }}</td>
+                                <td>{{ row.U_ID }}</td>
+                                <td>{{ row.A_ID }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <h3>User Rating Information</h3>
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>User ID</th>
+                            <th>Comment ID</th>
+                            <th>Rating</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in user_rating_data %}
+                            <tr>
+                                <td>{{ row.u_id }}</td>
+                                <td>{{ row.comment_id }}</td>
+                                <td>{{ row.rating }}</td>
+                                <td>{{ row.email }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <h3>Comment Information</h3>
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Email</th>
+                            <th>Title</th>
+                            <th>Comment</th>
+                            <th>User ID</th>
+                            <th>Date</th>
+                            <th>Rating</th>
+                            <th>Ratings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in comment_data %}
+                            <tr>
+                                <td>{{ row.email }}</td>
+                                <td>{{ row.title }}</td>
+                                <td>{{ row.comment }}</td>
+                                <td>{{ row.u_id }}</td>
+                                <td>{{ row.date }}</td>
+                                <td>{{ row.rating }}</td>
+                                <td>{{ row.ratings }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle (Popper.js included) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-kr2VfFwbZPlyw2PmIMtU8Q9UEN5BbbWE8lqT3QCkxHWlVboq7kL6g1N6tWOJIf5H" crossorigin="anonymous"></script>
+</body>
+</html>
